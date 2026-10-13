@@ -3,12 +3,12 @@
 # This script manages the state of the dockbar
 # Toggle it on/off, reload it, toggle auto-hide, or restore the previous state at startup.
 
-STATE_DIR="$HOME/.local/state/haku_theme"
+STATE_DIR="$HOME/.local/state/glow"
 AUTOHIDE_STATE="$STATE_DIR/dockbar_autohide_state"
 MANUAL_STATE="$STATE_DIR/dockbar_manual_state"
 
 DOCKBAR_DIR="$HOME/.config/waybar/dockbar"
-DOCKBAR_PIN_APPS="$HOME/hakuspace-control/dockbar_pin_apps"
+DOCKBAR_PIN_APPS="$HOME/bonfire-control/dockbar_pin_apps"
 AUTOHIDE_SCRIPT="$HOME/.local/bin/dockbar_autohide.py"
 
 mkdir -p "$STATE_DIR"

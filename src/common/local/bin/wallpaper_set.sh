@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Include BACKDROP_DIR & AWWW_OPTS
-[ -f "$HOME/hakuspace-control/main_setting.sh" ] && source "$HOME/hakuspace-control/main_setting.sh"
+[ -f "$HOME/bonfire-control/main_setting.sh" ] && source "$HOME/bonfire-control/main_setting.sh"
 
 BACKDROP_DIR=${BACKDROP_DIR:-/tmp}
 AWWW_OPTS=${AWWW_OPTS:-"--transition-type random --transition-step 90 --transition-fps 60"}

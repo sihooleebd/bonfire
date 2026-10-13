@@ -4,26 +4,26 @@
 #    / / / / /_/ / ,< / /_/ (__  ) /_/ / /_/ / /__/  __/
 #   /_/ /_/\__,_/_/|_|\__,_/____/ .___/\__,_/\___/\___/ 
 #                              /_/                      
-#   NixOS configuration file for hakuspace
+#   NixOS configuration file for bonfire
 
 { config, pkgs, lib, ... }:
 
 let
-  cfg = config.hakuspace;
+  cfg = config.bonfire;
 in
 {
   # Options ================================================
-  options.hakuspace = {
+  options.bonfire = {
     enable = lib.mkOption {
       type = lib.types.bool;
       default = true;
-      description = "Enable Hakuspace NixOS base configuration";
+      description = "Enable Bonfire NixOS base configuration";
     };
 
     enableFishShell = lib.mkOption {
       type = lib.types.bool;
       default = true;
-      description = "Enable Fish with Starship and Hakuspace default configuration and set as default shell";
+      description = "Enable Fish with Starship and Bonfire default configuration and set as default shell";
     };
   };
 

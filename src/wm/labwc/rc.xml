@@ -323,7 +323,7 @@
 
         <!-- Script keybinds -->
         <keybind key="W-Tab">
-        <action name="Execute" command="~/.local/bin/hakumenu.sh" />
+        <action name="Execute" command="~/.local/bin/flint.sh" />
         </keybind>
         <keybind key="W-w">
         <action name="Execute" command="~/.local/bin/dockbar_manager.sh --toggle" />
@@ -866,7 +866,7 @@
         </windowRules>
     -->
 
-    <!-- Haku Space Rules-->
+    <!-- Bonfire Space Rules-->
     <windowRules>
         <windowRule identifier="seycmd">
             <action name="SnapToEdge" direction="left" />

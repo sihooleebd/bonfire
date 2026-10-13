@@ -16,7 +16,7 @@ cat << 'EOF'
 
 EOF
 
-HAKU_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)"
+BONFIRE_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)"
 
 chmod +x ./scripts/*
 source "./scripts/variables.sh"
@@ -49,21 +49,21 @@ REPO_CHANGED=0
 
 if [[ "$update_mode" == "1" ]]; then
     log_info "Switching to main branch and pulling latest changes..."
-    git -C "$HAKU_DIR" checkout main
-    git -C "$HAKU_DIR" pull origin main
+    git -C "$BONFIRE_DIR" checkout main
+    git -C "$BONFIRE_DIR" pull origin main
     log_ok "Repository updated to LATEST."
     REPO_CHANGED=1
 elif [[ "$update_mode" == "2" ]]; then
     log_info "Fetching tags from remote..."
-    git -C "$HAKU_DIR" fetch --tags
-    LATEST_TAG=$(git -C "$HAKU_DIR" describe --tags $(git -C "$HAKU_DIR" rev-list --tags --max-count=1) 2>/dev/null)
+    git -C "$BONFIRE_DIR" fetch --tags
+    LATEST_TAG=$(git -C "$BONFIRE_DIR" describe --tags $(git -C "$BONFIRE_DIR" rev-list --tags --max-count=1) 2>/dev/null)
     if [[ -z "$LATEST_TAG" ]]; then
         log_warn "No tags found in repository. Falling back to main branch."
-        git -C "$HAKU_DIR" checkout main
-        git -C "$HAKU_DIR" pull origin main
+        git -C "$BONFIRE_DIR" checkout main
+        git -C "$BONFIRE_DIR" pull origin main
     else
         log_info "Latest stable tag found: $LATEST_TAG"
-        git -C "$HAKU_DIR" checkout "$LATEST_TAG"
+        git -C "$BONFIRE_DIR" checkout "$LATEST_TAG"
         log_ok "Repository updated to STABLE ($LATEST_TAG)."
     fi
     REPO_CHANGED=1
@@ -136,7 +136,7 @@ step_title "2 - BACKUP AND UPDATE CONFIG IN ~/.config"
 SOURCE_COMMON_CONFIG="$COMMON_DIR/config"
 DEST_CONFIG="$HOME/.config"
 
-if ask_yes_no "===> Do you want to update hakuspace configs now?"; then
+if ask_yes_no "===> Do you want to update bonfire configs now?"; then
 
     echo ">>> Deploying Common configs..."
     for folder in "$SOURCE_COMMON_CONFIG"/*/; do
@@ -197,7 +197,7 @@ step_title "3 - BACKUP AND UPDATE ~/.local/bin"
 SOURCE_BIN="$COMMON_DIR/local/bin"
 DEST_BIN="$HOME/.local/bin"
 
-if ask_yes_no "===> Do you want to update hakuspace local/bin scripts now?"; then
+if ask_yes_no "===> Do you want to update bonfire local/bin scripts now?"; then
     if [[ -d "$SOURCE_BIN" ]]; then
         copy_dir_content "$SOURCE_BIN" "$DEST_BIN"
         chmod +x ~/.local/bin/*
@@ -218,26 +218,26 @@ if command -v nixos-rebuild >/dev/null 2>&1; then
     REBUILD_DONE=0
 
     # Online mode
-    if [[ -f "/etc/nixos/flake.nix" ]] && grep -q "hakuspace.nixosModules.default" "/etc/nixos/flake.nix"; then
-        log_info "Detected NixOS with Hakuspace Flake (Online Mode)."
+    if [[ -f "/etc/nixos/flake.nix" ]] && grep -q "bonfire.nixosModules.default" "/etc/nixos/flake.nix"; then
+        log_info "Detected NixOS with Bonfire Flake (Online Mode)."
         if ask_yes_no "===> Do you want to update flake inputs and rebuild NixOS now?"; then
             cd /etc/nixos && sudo nix flake update && sudo nixos-rebuild switch --flake .
             log_ok "NixOS updated and rebuilt successfully via Flake."
             REBUILD_DONE=1
         fi
     # Offline mode
-    elif [[ -f "/etc/nixos/hakuspace-config.nix" ]] && grep -q "./hakuspace-config.nix" "/etc/nixos/configuration.nix"; then
-        log_info "Detected NixOS with Local hakuspace-config.nix (Offline Mode)."
-        if ask_yes_no "===> Do you want to update local hakuspace-config.nix and rebuild NixOS now?"; then
-            copy_file "$NIX_DIR/hakuspace-config.nix" "/etc/nixos/hakuspace-config.nix"
+    elif [[ -f "/etc/nixos/bonfire-config.nix" ]] && grep -q "./bonfire-config.nix" "/etc/nixos/configuration.nix"; then
+        log_info "Detected NixOS with Local bonfire-config.nix (Offline Mode)."
+        if ask_yes_no "===> Do you want to update local bonfire-config.nix and rebuild NixOS now?"; then
+            copy_file "$NIX_DIR/bonfire-config.nix" "/etc/nixos/bonfire-config.nix"
             log_info "Rebuilding NixOS system..."
             sudo nixos-rebuild switch
             log_ok "NixOS updated and rebuilt successfully via Local Config."
             REBUILD_DONE=1
         fi
-    # No Hakuspace configuration detected
+    # No Bonfire configuration detected
     else
-        log_warn "NixOS detected, but no Hakuspace configuration pattern found."
+        log_warn "NixOS detected, but no Bonfire configuration pattern found."
         log_warn "How it could be..."
     fi
 
@@ -246,7 +246,7 @@ if command -v nixos-rebuild >/dev/null 2>&1; then
     fi
 fi
 
-# Init HakuSpace Control
+# Init Bonfire Control
 check_control_dir
 
 # Final message

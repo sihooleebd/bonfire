@@ -45,8 +45,8 @@ if status is-interactive
 
     abbr c 'clear'
     abbr h 'history'
-    abbr haku '~/.local/bin/haku.sh'
-    abbr menu '~/.local/bin/hakumenu.sh'
+    abbr bonfire '~/.local/bin/bonfire.sh'
+    abbr menu '~/.local/bin/flint.sh'
     abbr openconfig '~/.local/bin/open_config.sh'
     abbr pacsize 'expac -H M "%m\t%n" $(\pacman -Qeq) | sort -h -r'
     abbr pacsizefull 'expac -H M "%m\t%n" | sort -h -r'

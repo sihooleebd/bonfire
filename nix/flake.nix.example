@@ -1,18 +1,18 @@
-# Example flake.nix for a NixOS configuration using Hakuspace NixOS modules.
-# This flake.nix file using ONLINE remote to fetch Hakuspace NixOS modules from GitHub
+# Example flake.nix for a NixOS configuration using Bonfire NixOS modules.
+# This flake.nix file using ONLINE remote to fetch Bonfire NixOS modules from GitHub
 
 {
-  description = "System Configuration powered by Hakuspace NixOS";
+  description = "System Configuration powered by Bonfire NixOS";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
-    hakuspace = {
-      url = "github:hakuimaku/hakuspace?dir=nix";
+    bonfire = {
+      url = "github:sihooleebd/bonfire?dir=nix";
     	inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, hakuspace, ... }@inputs: {
+  outputs = { self, nixpkgs, bonfire, ... }@inputs: {
     nixosConfigurations = {
 
     	# Change "nixos" to your hostname or leave it for default
@@ -22,7 +22,7 @@
       	modules = [
         	./hardware-configuration.nix
         	./configuration.nix
-        	hakuspace.nixosModules.default
+        	bonfire.nixosModules.default
       	];
     	};
   	};

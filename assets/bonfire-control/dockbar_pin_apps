@@ -15,7 +15,7 @@
         "exec": "$HOME/.local/bin/dockbar_geticon.sh menu", /* Use script `dockbar_geticon.sh` with `menu` argument to get menu icon */
         "size": 40,
         "interval": "once",
-        "on-click": "$HOME/.local/bin/hakumenu.sh" /* Here you put the command to execute when the icon is clicked */
+        "on-click": "$HOME/.local/bin/flint.sh" /* Here you put the command to execute when the icon is clicked */
     },
 
     /* Add more pin apps here */

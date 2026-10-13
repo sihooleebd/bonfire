@@ -137,7 +137,7 @@
 
     "custom/logo": {
         "format": "󰮯",
-        "on-click": "$HOME/.local/bin/hakumenu.sh",
+        "on-click": "$HOME/.local/bin/flint.sh",
         "tooltip-format": "Have a nice day!",
         "tooltip": true
     },

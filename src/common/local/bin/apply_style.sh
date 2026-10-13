@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-STATE_DIR="$HOME/.local/state/haku_theme"
+STATE_DIR="$HOME/.local/state/glow"
 
 # Apply GTK font (best-effort)
 if command -v gsettings >/dev/null 2>&1 && [[ -f "$STATE_DIR/fonts.css" ]]; then

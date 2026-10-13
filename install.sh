@@ -15,7 +15,7 @@ cat << 'EOF'
 
 EOF
 
-HAKU_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)"
+BONFIRE_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)"
 
 chmod +x ./scripts/*
 source "./scripts/variables.sh"
@@ -84,8 +84,8 @@ step_title "2 - INSTALL PACKAGES FROM LIST"
 PKG_LABELS=()
 PKG_FILES=()
 
-log_info "You need to install pkg-core.txt & pkg-<WM_NAME>.txt for hakuspace to work properly"
-log_info "You can CTRL+C to cancel installing & nano ~/hakuspace/common/pkg-core.txt to edit package list"
+log_info "You need to install pkg-core.txt & pkg-<WM_NAME>.txt for bonfire to work properly"
+log_info "You can CTRL+C to cancel installing & nano ~/bonfire/common/pkg-core.txt to edit package list"
 
 if command -v yay >/dev/null 2>&1; then
     for i in "${!SELECTED_WMS[@]}"; do
@@ -172,32 +172,32 @@ log_ok "All necessary directories have been created."
 # =======================================================
 if command -v nixos-rebuild >/dev/null 2>&1; then
     echo ""
-    log_info "NixOS detected. Choose configuration mode for HakuSpace Dotfiles:"
-    echo -e "  ${C_BOLD}[1]${C_RESET} Offline (Copy hakuspace-config.nix and edit configuration.nix)"
+    log_info "NixOS detected. Choose configuration mode for Bonfire Dotfiles:"
+    echo -e "  ${C_BOLD}[1]${C_RESET} Offline (Copy bonfire-config.nix and edit configuration.nix)"
     echo -e "  ${C_BOLD}[2]${C_RESET} Online Remote (Deploy flake.nix from template)"
     echo -e "  ${C_BOLD}[0]${C_RESET} Skip NixOS deployment"
     read -r -p ">>> Choose mode (1/2/0): " nixos_mode
 
     NIXOS_ETC="/etc/nixos"
-    SOURCE_HAKU_NIX="$NIX_DIR/hakuspace-config.nix"
+    SOURCE_BONFIRE_NIX="$NIX_DIR/bonfire-config.nix"
     SOURCE_FLAKE_EXAMPLE="$NIX_DIR/flake.nix.example"
 
     if [[ "$nixos_mode" == "1" ]]; then
         log_info "Deploying NixOS Offline Config..."
-        copy_file "$SOURCE_HAKU_NIX" "$NIXOS_ETC/hakuspace-config.nix"
+        copy_file "$SOURCE_BONFIRE_NIX" "$NIXOS_ETC/bonfire-config.nix"
             
         CONFIG_NIX="$NIXOS_ETC/configuration.nix"
         if [[ -f "$CONFIG_NIX" ]]; then
-            # Check if hakuspace-config.nix is already imported
-            if grep -q "./hakuspace-config.nix" "$CONFIG_NIX"; then
-                log_skip "./hakuspace-config.nix is already imported in $CONFIG_NIX."
+            # Check if bonfire-config.nix is already imported
+            if grep -q "./bonfire-config.nix" "$CONFIG_NIX"; then
+                log_skip "./bonfire-config.nix is already imported in $CONFIG_NIX."
             else
-                log_info "Injecting ./hakuspace-config.nix into imports of configuration.nix..."
-                grep -q '\./hakuspace-config\.nix' "$CONFIG_NIX" || sudo sed -i '/\.\/hardware-configuration\.nix/a \      .\/hakuspace-config\.nix' "$CONFIG_NIX"
+                log_info "Injecting ./bonfire-config.nix into imports of configuration.nix..."
+                grep -q '\./bonfire-config\.nix' "$CONFIG_NIX" || sudo sed -i '/\.\/hardware-configuration\.nix/a \      .\/bonfire-config\.nix' "$CONFIG_NIX"
                 log_ok "Updated imports in $CONFIG_NIX."
             fi
         else
-            log_warn "$CONFIG_NIX not found! Please import hakuspace-config.nix manually."
+            log_warn "$CONFIG_NIX not found! Please import bonfire-config.nix manually."
         fi
 
     elif [[ "$nixos_mode" == "2" ]]; then
@@ -206,9 +206,9 @@ if command -v nixos-rebuild >/dev/null 2>&1; then
             
         if [[ -f "$DEST_FLAKE" ]]; then
             log_warn "$DEST_FLAKE already exists."
-            log_warn "Hakuspace flake.nix will overwrite your existing flake.nix (backup your own first)."
-            log_warn "Hakuspace flake.nix is a template and may not include your custom configurations."
-            if ask_yes_no "===> Do you want to use hakuspace flake.nix?"; then
+            log_warn "Bonfire flake.nix will overwrite your existing flake.nix (backup your own first)."
+            log_warn "Bonfire flake.nix is a template and may not include your custom configurations."
+            if ask_yes_no "===> Do you want to use bonfire flake.nix?"; then
                 copy_file "$SOURCE_FLAKE_EXAMPLE" "$DEST_FLAKE"
                 log_ok "flake.nix overwritten successfully."
             else
@@ -226,16 +226,16 @@ fi
 # ============================================================================
 # BLOCK 4: BACKUP AND COPY CONFIG
 # ============================================================================
-step_title "4 - SETUP HAKUSPACE CONFIG"
+step_title "4 - SETUP BONFIRE CONFIG"
 
-log_info "Backing up existing configs in ~/.config and copying new configs from hakuspace/common/config"
-log_warn "Do NOT skip this step in the first time installation hakuspace"
+log_info "Backing up existing configs in ~/.config and copying new configs from bonfire/common/config"
+log_warn "Do NOT skip this step in the first time installation bonfire"
 
 SOURCE_COMMON_CONFIG="$COMMON_DIR/config"
 SOURCE_ONCE_CONFIG="$COMMON_DIR/once-config"
 DEST_CONFIG="$HOME/.config"
 
-if ask_yes_no "===> Do you want to setup hakuspace config now?"; then
+if ask_yes_no "===> Do you want to setup bonfire config now?"; then
 
     echo ">>> Deploying Common configs..."
     for folder in "$SOURCE_COMMON_CONFIG"/*/; do
@@ -303,13 +303,13 @@ fi
 # ============================================================================
 step_title "5 - SETUP LOCAL BIN SCRIPTS"
 
-log_info "Backing up existing ~/.local/bin and copying new scripts from hakuspace/common/local/bin"
-log_warn "Do NOT skip this step in the first time installation hakuspace"
+log_info "Backing up existing ~/.local/bin and copying new scripts from bonfire/common/local/bin"
+log_warn "Do NOT skip this step in the first time installation bonfire"
 
 SOURCE_BIN="$COMMON_DIR/local/bin"
 DEST_BIN="$HOME/.local/bin"
 
-if ask_yes_no "===> Do you want to setup hakuspace scripts now?"; then
+if ask_yes_no "===> Do you want to setup bonfire scripts now?"; then
     if [[ -d "$SOURCE_BIN" ]]; then
         copy_dir_content "$SOURCE_BIN" "$DEST_BIN"
         chmod +x ~/.local/bin/*
@@ -322,13 +322,13 @@ else
 fi
 
 # ============================================================================
-# BLOCK 6: CLONE HAKUSPACE-ARCHIVE AND RUN setup.sh
+# BLOCK 6: CLONE BONFIRE-ARCHIVE AND RUN setup.sh
 # ============================================================================
 step_title "6 - DEPLOY EXTRA ASSETS FROM hakuspace-archive"
 
 log_info "Clone hakuspace-archive to setup icons, themes, and wallpapers. You can skip this step if you don't want to install them."
 
-if ask_yes_no "===> Do you want to setup hakuspace assets: Icons, Themes and Wallpapers?"; then
+if ask_yes_no "===> Do you want to setup bonfire assets: Icons, Themes and Wallpapers?"; then
     if deploy_assets_from_archive_repo; then
         log_ok "hakuspace-archive setup completed."
     else
@@ -370,7 +370,7 @@ else
     log_warn "Fish shell is not installed. Skipping shell change."
 fi
 
-# Init HakuSpace Control
+# Init Bonfire Control
 check_control_dir
 
 # NixOS configuration update

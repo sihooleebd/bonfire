@@ -158,8 +158,8 @@ install_pkg_file() {
 print_header() {
     echo ""
     echo -e "${C_BOLD}===================================================================${C_RESET}"
-    echo -e "${C_BOLD}${C_CYAN}--- WELCOME TO HAKUSPACE - CONFIG INSTALLER ---${C_RESET}"
-    echo "This script will help you set up your HakuSpace configuration"
+    echo -e "${C_BOLD}${C_CYAN}--- WELCOME TO BONFIRE - CONFIG INSTALLER ---${C_RESET}"
+    echo "This script will help you set up your Bonfire configuration"
     echo "It will install packages, copy configs with backup, and setup environment."
     echo "Please follow the prompts to complete the installation process."
     echo "Press CTRL+C to cancel at any time."
@@ -258,11 +258,11 @@ deploy_assets_from_archive_repo() {
     (cd "$ARCHIVE_DIR" && ./setup.sh)
 }
 
-# Check ~/hakuspace-control directory:
+# Check ~/bonfire-control directory:
 check_control_dir() {
-    if [[ ! -d "$HAKUSPACE_CONTROL_DIR" ]]; then
-        log_warn "hakuspace-control directory not found. Creating..."
-        mkdir -p "$HAKUSPACE_CONTROL_DIR"
+    if [[ ! -d "$BONFIRE_CONTROL_DIR" ]]; then
+        log_warn "bonfire-control directory not found. Creating..."
+        mkdir -p "$BONFIRE_CONTROL_DIR"
     fi
 
     local required_files=(
@@ -271,12 +271,12 @@ check_control_dir() {
         "niri-custom.kdl"
         "hyprland-custom.lua"
         "dockbar_pin_apps"
-        "hakumenu-general-custom.sh"
+        "flint-general-custom.sh"
     )
     for file in "${required_files[@]}"; do
         if [[ ! -f "$DEST_CONTROL_DIR/$file" ]]; then
-            log_warn "$file not found in hakuspace-control. Creating default..."
-            copy_file "$HAKUSPACE_CONTROL_DIR/$file" "$DEST_CONTROL_DIR/$file"
+            log_warn "$file not found in bonfire-control. Creating default..."
+            copy_file "$BONFIRE_CONTROL_DIR/$file" "$DEST_CONTROL_DIR/$file"
         fi
     done
 
@@ -284,28 +284,28 @@ check_control_dir() {
     mkdir -p "$DEST_CONTROL_DIR/rofi"
     chmod +x "$DEST_CONTROL_DIR/main_setting.sh"
 
-    # Check HakuSpace Control version
+    # Check Bonfire Control version
     if [[ -f "$DEST_CONTROL_DIR/main_setting.sh" ]]; then
         local current_version
         local source_version
-        chmod +x "$HAKUSPACE_CONTROL_DIR/main_setting.sh"
+        chmod +x "$BONFIRE_CONTROL_DIR/main_setting.sh"
 
-        source_version=$("$HAKUSPACE_CONTROL_DIR/main_setting.sh" | grep -oP 'Hakuspace Control Settings Version: \K[0-9]+\.[0-9]+\.[0-9]+')
-        current_version=$("$DEST_CONTROL_DIR/main_setting.sh" | grep -oP 'Hakuspace Control Settings Version: \K[0-9]+\.[0-9]+\.[0-9]+')
+        source_version=$("$BONFIRE_CONTROL_DIR/main_setting.sh" | grep -oP 'Bonfire Control Settings Version: \K[0-9]+\.[0-9]+\.[0-9]+')
+        current_version=$("$DEST_CONTROL_DIR/main_setting.sh" | grep -oP 'Bonfire Control Settings Version: \K[0-9]+\.[0-9]+\.[0-9]+')
         if [[ "$current_version" != "$source_version" ]]; then
-            log_warn "Hakuspace Control version mismatch: $current_version (current) vs $source_version (expected). Updating..."
+            log_warn "Bonfire Control version mismatch: $current_version (current) vs $source_version (expected). Updating..."
             log_warn "If you choose update, your custom settings in main_setting.sh will be overwritten."
-            if ask_yes_no "===> Do you want to update hakuspace-control to the latest version?"; then
-                copy_file "$HAKUSPACE_CONTROL_DIR/main_setting.sh" "$DEST_CONTROL_DIR/main_setting.sh"
-                log_ok "Hakuspace Control updated to version $source_version."
+            if ask_yes_no "===> Do you want to update bonfire-control to the latest version?"; then
+                copy_file "$BONFIRE_CONTROL_DIR/main_setting.sh" "$DEST_CONTROL_DIR/main_setting.sh"
+                log_ok "Bonfire Control updated to version $source_version."
             else
-                log_warn "You chose not to update hakuspace-control. Some features may not work as expected."
+                log_warn "You chose not to update bonfire-control. Some features may not work as expected."
             fi
         else
-            log_ok "Hakuspace Control version is up-to-date: $current_version"
+            log_ok "Bonfire Control version is up-to-date: $current_version"
         fi
     else
-        log_warn "main_setting.sh not found in hakuspace-control. Creating default..."
-        copy_file "$HAKUSPACE_CONTROL_DIR/main_setting.sh" "$DEST_CONTROL_DIR/main_setting.sh"
+        log_warn "main_setting.sh not found in bonfire-control. Creating default..."
+        copy_file "$BONFIRE_CONTROL_DIR/main_setting.sh" "$DEST_CONTROL_DIR/main_setting.sh"
     fi
 }

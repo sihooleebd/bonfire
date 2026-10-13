@@ -5,6 +5,6 @@
     <item label="  Terminal"><action name="Execute" command="kitty"/></item>
     <item label="󰖟  Web browser"><action name="Execute" command="firefox"/></item>
     <item label="  File Manager"><action name="Execute" command="thunar"/></item>
-    <item label="󰍜  Haku Menu"><action name="Execute" command="~/.local/bin/hakumenu.sh"/></item>
+    <item label="󰍜  Bonfire Menu"><action name="Execute" command="~/.local/bin/flint.sh"/></item>
 </menu>
 </openbox_menu>

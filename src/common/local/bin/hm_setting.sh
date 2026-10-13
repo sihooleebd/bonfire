@@ -3,7 +3,7 @@
 spawn() { ( "$@" & ) >/dev/null 2>&1; disown; }
 
 if [[ $# -eq 0 ]]; then
-    DOCK_STATUS=$(cat "$HOME/.local/state/haku_theme/dockbar_autohide_state" 2>/dev/null || echo "0")
+    DOCK_STATUS=$(cat "$HOME/.local/state/glow/dockbar_autohide_state" 2>/dev/null || echo "0")
     DOCK_TEXT="OFF"
     [[ "$DOCK_STATUS" == "1" ]] && DOCK_TEXT="ON"
 
@@ -20,7 +20,7 @@ if [[ $# -eq 0 ]]; then
 󱂩  Dockbar Exclusive Toggle ($DOCK_EXCLUSIVE_TEXT)
 󱂩  Dockbar Icon Size Change ($DOCK_ICON_SIZE_TEXT)
 󱁤  Settings Folder
-󱁤  HakuMenu General Tab
+󱁤  BonfireMenu General Tab
 󰖩  Wifi
 󰂯  Bluetooth
 󰋊  Disk Manager
@@ -35,8 +35,8 @@ case "$chosen" in
     *"Dockbar Auto-hide Toggle"*) spawn $HOME/.local/bin/dockbar_manager.sh --auto-hide ;;
     *"Dockbar Exclusive Toggle"*) spawn $HOME/.local/bin/dockbar_manager.sh --exclusive ;;
     *"Dockbar Icon Size Change"*) spawn $HOME/.local/bin/dockbar_manager.sh --icon-size ;;
-    *"Open Settings Folder"*) spawn thunar "$HOME/hakuspace-control" ;;
-    *"Open Config Menu General Tab"*) spawn code $HOME/hakuspace-control/hakumenu-general-custom.sh ;;
+    *"Open Settings Folder"*) spawn thunar "$HOME/bonfire-control" ;;
+    *"Open Config Menu General Tab"*) spawn code $HOME/bonfire-control/flint-general-custom.sh ;;
     *"Wifi"*) spawn nm-connection-editor ;;
     *"Bluetooth"*) spawn blueman-manager ;;
     *"Disk Manager"*) spawn gparted ;;

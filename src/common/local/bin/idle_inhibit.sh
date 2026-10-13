@@ -13,7 +13,7 @@ if [[ $(printf '%s\n%s' "$MIN_VERSION" "$HYPRIDLE_VERSION" | sort -V | head -n1)
     exit 1
 fi
 
-STATE_DIR="$HOME/.local/state/haku_theme"
+STATE_DIR="$HOME/.local/state/glow"
 STATE_FILE="$STATE_DIR/idle_inhibit"
 
 # Ensure the directory exists

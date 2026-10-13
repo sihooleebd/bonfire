@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Include WALL_DIR & WALL_INTERVAL & ACCENT_COLOR_BASED_ON_WALLPAPER
-[ -f "$HOME/hakuspace-control/main_setting.sh" ] && source "$HOME/hakuspace-control/main_setting.sh"
+[ -f "$HOME/bonfire-control/main_setting.sh" ] && source "$HOME/bonfire-control/main_setting.sh"
 
 # Fallback WALL_DIR and WALL_INTERVAL if not set
 WALL_DIR=${WALL_DIR:-$HOME/Pictures/Wallpapers}

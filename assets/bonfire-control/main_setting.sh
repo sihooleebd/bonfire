@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
-# This script is used to set up the main settings for all hakuspace's scripts.
+# This script is used to set up the main settings for all bonfire's scripts.
 # DO NOT EDIT THIS LINE :v, used for check main_setting.sh up-to-date when run update.sh
 SETTING_VERSION="2.2.2"
-echo "Hakuspace Control Settings Version: $SETTING_VERSION"
+echo "Bonfire Control Settings Version: $SETTING_VERSION"
 
 # General Settings
 NIGHT_LIGHT_TEMPERATURE=4000
 SCREENSHOT_DIR="$HOME/Pictures/Screenshots"
 
-# Niri use screenshot built-in, so SCREENSHOT_DIR is not used in Niri, you can customize it in ~/hakuspace-control/niri-custom.kdl
+# Niri use screenshot built-in, so SCREENSHOT_DIR is not used in Niri, you can customize it in ~/bonfire-control/niri-custom.kdl
 # But if you want to use my screenshot script, just add keybind for that
 
 # Wallpaper Settings
@@ -29,18 +29,18 @@ REC_OPTS="--max-fps 60 --codec avc --encode-pixfmt nv12" # wl-screenrec options,
 
 # Waybar Theme Settings
 # Add your custom Waybar modes here, e.g., ("custom1" "custom2")
-# You just add your waybar config to ~/hakuspace-control/waybar with `config` and `style.css` files.
+# You just add your waybar config to ~/bonfire-control/waybar with `config` and `style.css` files.
 # If name between WAYBAR_MODES_DEAULT and WAYBAR_MODE_USER is the same, WAYBAR_MODE_DEAULT (my theme) will be used.
-# Example: WAYBAR_MODE_USER=("custom1"), have ~/hakuspace-control/waybar/custom1/config and ~/hakuspace-control/waybar/custom1/style.css
+# Example: WAYBAR_MODE_USER=("custom1"), have ~/bonfire-control/waybar/custom1/config and ~/bonfire-control/waybar/custom1/style.css
 WAYBAR_MODE_USER=()
 
 # Rofi Theme Settings
-# You just add your theme "name.rasi" to the ~/hakuspace-control/rofi folder, and switch to it in Haku Menu (Theme tab)
+# You just add your theme "name.rasi" to the ~/bonfire-control/rofi folder, and switch to it in Bonfire Menu (Theme tab)
 
-# Haku Idle Space Settings (haku.sh)
-HAKU_CLOCK_FONT_SIZE=10
-HAKU_GENERAL_FONT_SIZE=11
-HAKU_TERMINAL_FONT_SIZE=14
+# Bonfire Idle Space Settings (bonfire.sh)
+BONFIRE_CLOCK_FONT_SIZE=10
+BONFIRE_GENERAL_FONT_SIZE=11
+BONFIRE_TERMINAL_FONT_SIZE=14
 
 # Exit Settings (exit.sh)
 # Threshold for RAM warning (in Megabytes)

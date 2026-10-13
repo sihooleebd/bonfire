@@ -1,12 +1,12 @@
 {
-  description = "System Configuration powered by Hakuspace NixOS";
+  description = "System Configuration powered by Bonfire NixOS";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    hakuspace = {
-      url = "github:hakuimaku/hakuspace?dir=nix";
+    bonfire = {
+      url = "github:sihooleebd/bonfire?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     fcitx5-lotus = {
@@ -15,7 +15,7 @@
       };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, zen-browser, fcitx5-lotus, hakuspace, ... }@inputs: {
+  outputs = { self, nixpkgs, nixpkgs-unstable, zen-browser, fcitx5-lotus, bonfire, ... }@inputs: {
     nixosConfigurations = {
     nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -28,7 +28,7 @@
         modules = [
           ./hardware-configuration.nix
           ./configuration.nix
-          hakuspace.nixosModules.default
+          bonfire.nixosModules.default
 
           ({ pkgs, ... }: {
             environment.systemPackages = [

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-CUSTOM_SCRIPT="$HOME/hakuspace-control/hakumenu-general-custom.sh"
+CUSTOM_SCRIPT="$HOME/bonfire-control/flint-general-custom.sh"
 
 # Check if a custom script exists and is executable
 if [[ -f "$CUSTOM_SCRIPT" ]]; then
@@ -20,7 +20,7 @@ if [[ -f "$CUSTOM_SCRIPT" ]]; then
 fi
 
 # Base fallback, use my own default :)
-notify-send "Haku Menu" "Your custom Haku Menu failed or is not present. Using default menu instead."
+notify-send "Bonfire Menu" "Your custom Bonfire Menu failed or is not present. Using default menu instead."
 spawn() { ( "$@" & ) >/dev/null 2>&1; disown; }
 
 if [[ $# -eq 0 ]]; then

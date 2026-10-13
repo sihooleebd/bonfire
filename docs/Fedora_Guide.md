@@ -1,7 +1,7 @@
-# Fedora - Haku Space Installation Guide
+# Fedora - Bonfire Space Installation Guide
 
 ## Prerequisites
-- Who wants to use Haku Space on Fedora :)
+- Who wants to use Bonfire Space on Fedora :)
 - A computer with Fedora installed.
 - This installation guide assumes you have basic knowledge of using the terminal and installing software on Fedora.
 - I'm using Fedora Workstation 44, this guide was written for this version.
@@ -92,9 +92,9 @@ sudo dnf install xdg-desktop-portal-wlr
 
 ---
 
-### C. Install Haku Space **Core** packages:
+### C. Install Bonfire Space **Core** packages:
 
-- **Install the following packages for Haku Space** (`scottames/awww`, `solopasha/hyprland`, `atim/starship`):
+- **Install the following packages for Bonfire Space** (`scottames/awww`, `solopasha/hyprland`, `atim/starship`):
 ```bash
 sudo dnf install waybar rofi swaync kitty fastfetch fish direnv zoxide eza
 
@@ -159,14 +159,14 @@ sudo dnf install code
 ```
 
 > [!tip]
-> See more optional packages: [here](https://github.com/hakuimaku/hakuspace/blob/main/common/pkg-optional.txt)
+> See more optional packages: [here](https://github.com/sihooleebd/bonfire/blob/main/common/pkg-optional.txt)
 
 ---
 
-## 3. Install Haku Space Configurations
+## 3. Install Bonfire Space Configurations
 
-Simply follow the instructions in the [Installation Guide](https://github.com/hakuimaku/hakuspace#-3)
+Simply follow the instructions in the [Installation Guide](https://github.com/sihooleebd/bonfire#-3)
 
 ---
 
-Restart your computer to apply the changes and start using Haku Space on Fedora!
+Restart your computer to apply the changes and start using Bonfire Space on Fedora!

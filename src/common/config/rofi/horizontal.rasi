@@ -1,8 +1,8 @@
 /* =====================================
-        Rofi Theme: Haku Theme :>
+        Rofi Theme: Bonfire Theme :>
  =======================================*/
 
-@import "../../.local/state/haku_theme/rofi-style.rasi"
+@import "../../.local/state/glow/rofi-style.rasi"
 
 /* ===== GLOBAL VARIABLES ===== */
 * {

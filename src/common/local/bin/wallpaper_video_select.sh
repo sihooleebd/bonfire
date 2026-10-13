@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Include WALL_MPV_DIR & PREVIEW_DIR & ACCENT_COLOR_BASED_ON_WALLPAPER
-[ -f "$HOME/hakuspace-control/main_setting.sh" ] && source "$HOME/hakuspace-control/main_setting.sh"
+[ -f "$HOME/bonfire-control/main_setting.sh" ] && source "$HOME/bonfire-control/main_setting.sh"
 
 WALL_MPV_DIR=${WALL_MPV_DIR:-$HOME/Videos/Wallpapers}
 PREVIEW_DIR=${PREVIEW_DIR:-$WALL_MPV_DIR/Preview}

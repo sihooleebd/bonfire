@@ -41,7 +41,7 @@
 }:
 
 /*
-  Hakuspace as a PACKAGE rather than a directory of files to copy.
+  Bonfire as a PACKAGE rather than a directory of files to copy.
 
   install.sh exists for distributions where that is the only option. On NixOS
   the same tree can be a derivation: the scripts get their dependencies wrapped
@@ -50,7 +50,7 @@
   way the desktop changes.
 
   WHAT IS DELIBERATELY NOT DONE HERE: the config files are installed BYTE FOR
-  BYTE. They reference $HOME/.local/bin/*.sh and $HOME/.local/state/haku_theme
+  BYTE. They reference $HOME/.local/bin/*.sh and $HOME/.local/state/glow
   throughout, and rewriting those to store paths would fork the configs from
   upstream's and make every future update a merge conflict. The home-manager
   module places the scripts at ~/.local/bin instead, so the references resolve
@@ -75,7 +75,7 @@ let
     ];
 in
 stdenvNoCC.mkDerivation {
-  pname = "hakuspace";
+  pname = "bonfire";
   version = "unstable";
 
   src = lib.cleanSource ../.;
@@ -88,25 +88,25 @@ stdenvNoCC.mkDerivation {
   installPhase = ''
     runHook preInstall
 
-    mkdir -p $out/share/hakuspace $out/bin
+    mkdir -p $out/share/bonfire $out/bin
 
-    # Configs, window-manager trees and the seed for ~/hakuspace-control,
+    # Configs, window-manager trees and the seed for ~/bonfire-control,
     # unmodified. The home-manager module decides which of these are linked.
-    cp -r src/common/config  $out/share/hakuspace/config
-    cp -r src/wm             $out/share/hakuspace/wm
-    cp -r assets/hakuspace-control $out/share/hakuspace/control
-    cp -r assets/browser     $out/share/hakuspace/browser
+    cp -r src/common/config  $out/share/bonfire/config
+    cp -r src/wm             $out/share/bonfire/wm
+    cp -r assets/bonfire-control $out/share/bonfire/control
+    cp -r assets/browser     $out/share/bonfire/browser
 
     # Scripts keep their .sh/.py names: the configs and keybinds call them by
     # basename under ~/.local/bin, so renaming any of them breaks the callers.
     for f in src/common/local/bin/*; do
       name=$(basename "$f")
-      install -Dm755 "$f" "$out/share/hakuspace/scripts/$name"
+      install -Dm755 "$f" "$out/share/bonfire/scripts/$name"
     done
 
-    patchShebangs $out/share/hakuspace/scripts
+    patchShebangs $out/share/bonfire/scripts
 
-    for f in $out/share/hakuspace/scripts/*; do
+    for f in $out/share/bonfire/scripts/*; do
       name=$(basename "$f")
       makeWrapper "$f" "$out/bin/$name" \
         --prefix PATH : "${lib.makeBinPath runtimeDeps}" \
@@ -143,7 +143,7 @@ stdenvNoCC.mkDerivation {
 
   meta = {
     description = "Hyprland / Niri / MangoWM / Labwc dotfiles with a shared Waybar, Rofi and SwayNC desktop";
-    homepage = "https://github.com/hakuimaku/hakuspace";
+    homepage = "https://github.com/sihooleebd/bonfire";
     license = lib.licenses.mit;
     platforms = lib.platforms.linux;
   };

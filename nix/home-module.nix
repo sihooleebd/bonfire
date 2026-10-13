@@ -1,8 +1,8 @@
 { config, lib, pkgs, ... }:
 
 let
-  cfg = config.programs.hakuspace;
-  share = "${cfg.package}/share/hakuspace";
+  cfg = config.programs.bonfire;
+  share = "${cfg.package}/share/bonfire";
 
   /*
     DIRECTORIES THE SCRIPTS WRITE INTO, and therefore the ones that must stay
@@ -23,8 +23,8 @@ let
     need.
 
     Everything else is linked whole, because nothing writes into it: generated
-    theme output goes to ~/.local/state/haku_theme and user overrides to
-    ~/hakuspace-control, both outside ~/.config by design.
+    theme output goes to ~/.local/state/glow and user overrides to
+    ~/bonfire-control, both outside ~/.config by design.
   */
   writableDirs = [ "waybar" "rofi" ];
 
@@ -44,12 +44,12 @@ let
   selected = lib.filter (n: builtins.elem n cfg.configNames) cfg.package.passthru.configNames;
 in
 {
-  options.programs.hakuspace = {
-    enable = lib.mkEnableOption "the Hakuspace desktop (Waybar, Rofi, SwayNC and its script suite)";
+  options.programs.bonfire = {
+    enable = lib.mkEnableOption "the Bonfire desktop (Waybar, Rofi, SwayNC and its script suite)";
 
     package = lib.mkOption {
       type = lib.types.package;
-      description = "The hakuspace package, as built by ./package.nix.";
+      description = "The bonfire package, as built by ./package.nix.";
     };
 
     compositor = lib.mkOption {
@@ -60,7 +60,7 @@ in
         none.
 
         NULL IS A REAL CHOICE, not a placeholder. A configuration that already
-        manages its own compositor wants Hakuspace's bar, launcher and scripts
+        manages its own compositor wants Bonfire's bar, launcher and scripts
         WITHOUT a second, complete compositor config competing for the same
         file -- so the bar half and the window-manager half are separable.
       '';
@@ -86,7 +86,7 @@ in
         type = lib.types.bool;
         default = true;
         description = ''
-          Seed ~/hakuspace-control with the shipped defaults.
+          Seed ~/bonfire-control with the shipped defaults.
 
           COPIED, NOT SYMLINKED, and that is the point of the directory: it is
           where a user's own overrides live, so it has to be writable and has
@@ -126,7 +126,7 @@ in
 
       (lib.mkIf (cfg.compositor != null) {
         # Whole-tree link: nothing writes into the WM config, and the custom
-        # entry point is ~/hakuspace-control/<wm>-custom.* which lives outside.
+        # entry point is ~/bonfire-control/<wm>-custom.* which lives outside.
         ".config/${if cfg.compositor == "hyprland" then "hypr" else cfg.compositor}".source =
           "${share}/wm/${cfg.compositor}";
       })
@@ -143,9 +143,9 @@ in
       requires anything touching the real home to be ordered after the point
       where it has finished deciding what the generation contains.
     */
-    home.activation.hakuspaceControl = lib.mkIf cfg.controlDir.enable (
+    home.activation.bonfireControl = lib.mkIf cfg.controlDir.enable (
       lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        control="$HOME/hakuspace-control"
+        control="$HOME/bonfire-control"
         run mkdir -p "$control/waybar" "$control/rofi"
         for f in ${share}/control/*; do
           name="$(basename "$f")"

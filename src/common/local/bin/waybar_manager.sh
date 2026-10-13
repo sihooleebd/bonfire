@@ -3,11 +3,11 @@
 # Manage Waybar modes via symlinks, Rofi selection, and mode cycling.
 
 # Include WAYBAR_MODE_USER
-[ -f "$HOME/hakuspace-control/main_setting.sh" ] && source "$HOME/hakuspace-control/main_setting.sh"
+[ -f "$HOME/bonfire-control/main_setting.sh" ] && source "$HOME/bonfire-control/main_setting.sh"
 
 WAYBAR_DIR="$HOME/.config/waybar"
-USER_WAYBAR_DIR="$HOME/hakuspace-control/waybar"
-STATE_FILE="$HOME/.local/state/haku_theme/waybar_current_mode"
+USER_WAYBAR_DIR="$HOME/bonfire-control/waybar"
+STATE_FILE="$HOME/.local/state/glow/waybar_current_mode"
 CURRENT_STATE="top"
 WAYBAR_MODES_DEAULT=("top" "neon" "island" "coredge" "full" "minimal" "left")
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-STATE_DIR="$HOME/.local/state/haku_theme"
+STATE_DIR="$HOME/.local/state/glow"
 GEN="$HOME/.local/bin/gen_style.sh"
 APPLY="$HOME/.local/bin/apply_style.sh"
 

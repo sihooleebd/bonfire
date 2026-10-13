@@ -193,14 +193,14 @@
 
     "custom/search": {
         "format": "",
-        "tooltip-format": "Haku Menu",
-        "on-click": "exec $HOME/.local/bin/hakumenu.sh"
+        "tooltip-format": "Bonfire Menu",
+        "on-click": "exec $HOME/.local/bin/flint.sh"
     },
 
     "custom/setting": {
         "format": "",
         "tooltip-format": "Setting folder",
-        "on-click": "exec xdg-open $HOME/hakuspace-control/"
+        "on-click": "exec xdg-open $HOME/bonfire-control/"
     },
 
     "custom/power": {

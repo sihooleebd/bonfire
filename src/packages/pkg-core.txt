@@ -1,4 +1,4 @@
-# === Core packages for Hakuspace ===
+# === Core packages for Bonfire ===
 waybar                        # Wayland status bar
 rofi                          # App launcher and dmenu replacement
 swaync                        # Notification daemon + notification center
@@ -11,7 +11,7 @@ hypridle                      # Idle management
 hyprpicker                    # Color picker
 fish                          # Shell
 
-# === Hakuspace scripts needed ===
+# === Bonfire scripts needed ===
 jq                            # Command-line JSON processor
 imagemagick                   # Image processing toolkit (For Niri, generating backdrop blur)
 python-colorthief             # Extract dominant color palette from images (Function wallpaper color picker)

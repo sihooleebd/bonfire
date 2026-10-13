@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Include Font Size Settings
-[ -f "$HOME/hakuspace-control/main_setting.sh" ] && source "$HOME/hakuspace-control/main_setting.sh"
+[ -f "$HOME/bonfire-control/main_setting.sh" ] && source "$HOME/bonfire-control/main_setting.sh"
 
 need() { command -v "$1" >/dev/null 2>&1 || { echo "$1 is required"; exit 1; }; }
 
@@ -13,9 +13,9 @@ need lavat
 need jq
 
 # Main
-HAKU_CLOCK_FONT_SIZE=${HAKU_CLOCK_FONT_SIZE:-10}
-HAKU_GENERAL_FONT_SIZE=${HAKU_GENERAL_FONT_SIZE:-11}
-HAKU_TERMINAL_FONT_SIZE=${HAKU_TERMINAL_FONT_SIZE:-14}
+BONFIRE_CLOCK_FONT_SIZE=${BONFIRE_CLOCK_FONT_SIZE:-10}
+BONFIRE_GENERAL_FONT_SIZE=${BONFIRE_GENERAL_FONT_SIZE:-11}
+BONFIRE_TERMINAL_FONT_SIZE=${BONFIRE_TERMINAL_FONT_SIZE:-14}
 
 spawn() { ( setsid "$@" & ) >/dev/null 2>&1; }
 
@@ -29,22 +29,22 @@ clear() {
 }
 
 cava() {
-    spawn kitty --title "hakucava" --class "seycava" -o font_size=$HAKU_GENERAL_FONT_SIZE sh -c "cava"
+    spawn kitty --title "bonfirecava" --class "seycava" -o font_size=$BONFIRE_GENERAL_FONT_SIZE sh -c "cava"
     sleep 0.2
 }
 
 lavat() {
-    spawn kitty --title "hakulavat" --class "seylavat" -o font_size=$HAKU_GENERAL_FONT_SIZE sh -c "lavat -c white -k white -r1"
+    spawn kitty --title "bonfirelavat" --class "seylavat" -o font_size=$BONFIRE_GENERAL_FONT_SIZE sh -c "lavat -c white -k white -r1"
     sleep 0.2
 }
 
 clock() {
-    spawn kitty --title "hakuclock" --class "seyclock" -o font_size=$HAKU_CLOCK_FONT_SIZE sh -c "tty-clock -c -C 7 -r -b"
+    spawn kitty --title "bonfireclock" --class "seyclock" -o font_size=$BONFIRE_CLOCK_FONT_SIZE sh -c "tty-clock -c -C 7 -r -b"
     sleep 0.2
 }
 
 cmd() {
-    spawn kitty --title "hakucmd" --class "seycmd" -o font_size=$HAKU_TERMINAL_FONT_SIZE --hold fastfetch
+    spawn kitty --title "bonfirecmd" --class "seycmd" -o font_size=$BONFIRE_TERMINAL_FONT_SIZE --hold fastfetch
     sleep 0.2
 }
 

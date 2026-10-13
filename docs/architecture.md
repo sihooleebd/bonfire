@@ -1,12 +1,12 @@
 # Directory Structure & Architecture Specification
 
-This document provides a detailed breakdown of the `hakuspace` repository layout, explaining the exact responsibility and scope of each directory and core execution script.
+This document provides a detailed breakdown of the `bonfire` repository layout, explaining the exact responsibility and scope of each directory and core execution script.
 
 ```text
-hakuspace (root)
+bonfire (root)
 ├── assets/
 │   ├── browser/             # Custom userChrome.css & newtab.html for Firefox
-│   └── hakuspace-control/   # Templates for hakuspace-control
+│   └── bonfire-control/   # Templates for bonfire-control
 │
 ├── docs/                    # Documentation for my dots
 ├── nix/                     # Declarative Nix configuration
@@ -25,7 +25,7 @@ hakuspace (root)
 ### Root Execution Scripts (`/`)
 
 * **`install.sh`**: The primary installation script, use this for first-time setup. Handles environment detection, package installation, setup configuration from `src/`, and deploying initial control templates from `assets/`.
-* **`update.sh`**: The update script. Pulls the latest repository changes, updates configurations and ensures hakuspace-control templates are current.
+* **`update.sh`**: The update script. Pulls the latest repository changes, updates configurations and ensures bonfire-control templates are current.
 
 ### 1. `scripts/` (Core Helper Libraries)
 
@@ -52,7 +52,7 @@ The primary search target and storage location for all managed user configuratio
 Stores static assets, browser modifications, and central state templates.
 
 * **`assets/browser/`**: Custom web assets including `userChrome.css` for Firefox UI mods and `newtab.html` for clock homepages (put it in the `~/Documents/` directory).
-* **`assets/hakuspace-control/`**: Template files for the Hakuspace Control Center. These serve as the baseline configuration state deployed to the runtime environment.
+* **`assets/bonfire-control/`**: Template files for the Bonfire Control Center. These serve as the baseline configuration state deployed to the runtime environment.
 
 ### 4. `docs/` (Documentation)
 
@@ -63,7 +63,7 @@ Stores static assets, browser modifications, and central state templates.
 ### 5. `nix/` (Nix Declarative Module)
 
 * Contains NixOS declarative configuration files for system setup and package management.
-* `hakuspace-control.nix`: Main NixOS configuration file.
+* `bonfire-control.nix`: Main NixOS configuration file.
 * `flakes.nix`: Flake configuration online remote helper.
 * `flake.nix.template`: Template for creating new Nix flakes for the first time installation NixOS.
 

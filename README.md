@@ -1,7 +1,9 @@
 <div align="center">
 
-# Haku Space
+# Bonfire Space
 Hyprland / Niri / MangoWM / Labwc dotfiles for Arch / Fedora / NixOS
+
+_Expanded from [hakuimaku/hakuspace](https://github.com/hakuimaku/hakuspace)._
 
 </div>
 
@@ -11,20 +13,20 @@ Hyprland / Niri / MangoWM / Labwc dotfiles for Arch / Fedora / NixOS
     <a href="https://github.com/mangowm/mango"><img alt="MangoWM" src="https://img.shields.io/badge/-MangoWM-%23212121?style=for-the-badge&logo=wayland&logoColor=%23FFFFFF&labelColor=%23000000"></a>&nbsp;
     <a href="https://github.com/labwc/labwc"><img alt="Labwc" src="https://img.shields.io/badge/-Labwc-%23212121?style=for-the-badge&logo=wayland&logoColor=%23FFFFFF&labelColor=%23000000"></a>&nbsp;
     <br />
-    <a href="https://github.com/hakuimaku/hakuspace/commits/main"><img alt="Last Commit" src="https://img.shields.io/github/last-commit/hakuimaku/hakuspace?style=for-the-badge&label=Last%20Commit&labelColor=%23000000&color=%23212121&logo=git&logoColor=%23FFFFFF"></a>&nbsp;
-    <a href="https://github.com/hakuimaku/hakuspace/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/hakuimaku/hakuspace?style=for-the-badge&label=Stars&labelColor=%23000000&color=%23212121&logo=github&logoColor=%23FFFFFF"></a>&nbsp;
-    <a href="https://github.com/hakuimaku/hakuspace"><img alt="Repo Size" src="https://img.shields.io/github/repo-size/hakuimaku/hakuspace?style=for-the-badge&label=Repo%20Size&labelColor=%23000000&color=%23212121&logo=github&logoColor=%23FFFFFF"></a>
+    <a href="https://github.com/sihooleebd/bonfire/commits/main"><img alt="Last Commit" src="https://img.shields.io/github/last-commit/sihooleebd/bonfire?style=for-the-badge&label=Last%20Commit&labelColor=%23000000&color=%23212121&logo=git&logoColor=%23FFFFFF"></a>&nbsp;
+    <a href="https://github.com/sihooleebd/bonfire/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/sihooleebd/bonfire?style=for-the-badge&label=Stars&labelColor=%23000000&color=%23212121&logo=github&logoColor=%23FFFFFF"></a>&nbsp;
+    <a href="https://github.com/sihooleebd/bonfire"><img alt="Repo Size" src="https://img.shields.io/github/repo-size/sihooleebd/bonfire?style=for-the-badge&label=Repo%20Size&labelColor=%23000000&color=%23212121&logo=github&logoColor=%23FFFFFF"></a>
 </p>
 
 | <img width="1920" height="1080" alt="screenshot_2026-08-29_14-26-24" src="https://github.com/user-attachments/assets/1e0dc63a-22ee-482a-9902-9d458bb67e35" /> | <img width="1920" height="1080" alt="screenshot_2026-08-25_06-52-48" src="https://github.com/user-attachments/assets/c3ca125c-12f5-49d8-afd3-1aa68b64c8fe" /> |
 |--|--|
 | <img width="1920" height="1080" alt="screenshot_2026-08-25_07-03-04" src="https://github.com/user-attachments/assets/8c599b1a-6947-4ce3-a511-37645a0eda5b" /> | <img width="1920" height="1080" alt="screenshot_2026-08-25_07-04-51" src="https://github.com/user-attachments/assets/dd0abd39-a7e7-41dd-aaff-4f8422894622" /> |
 
-## Welcome to Haku Space
+## Welcome to Bonfire Space
 
 <div align="center">
 
-[Installation](#installation-guide) ─ [Update](#update-haku-space) ─ [Packages](#programs) ─ [Keybinding](#keybinding) ─ [Troubleshooting](#troubleshooting)
+[Installation](#installation-guide) ─ [Update](#update-bonfire-space) ─ [Packages](#programs) ─ [Keybinding](#keybinding) ─ [Troubleshooting](#troubleshooting)
 
 *Need help or want to chat? Join our Discord server or follow us on TikTok for showcase videos!*
 
@@ -42,7 +44,7 @@ Hyprland / Niri / MangoWM / Labwc dotfiles for Arch / Fedora / NixOS
 
 ## Key Features
 
-* **Control Center**: `~/hakuspace-control` this directory stores your custom configs so you don't have to touch the main ones, giving you much more freedom to customize.
+* **Control Center**: `~/bonfire-control` this directory stores your custom configs so you don't have to touch the main ones, giving you much more freedom to customize.
 * **Accent Colors**: Synced across **Waybar**, **Rofi**, **Kitty**, **Swaync**,... giving your setup a **Super Clean** and **Cohesive Vibe**!
 * **Smart Accent Color:** Automatically generates the accent color based on your current wallpaper.
 * **Flexible Waybar Layouts:** Support 7 styles: `top`, `left`, `coredge`, `minimal`, `full`, `neon`, `island`.
@@ -103,20 +105,20 @@ Specific packages for each WM: [pkg-hyprland](src/packages/pkg-hyprland.txt) | [
 - Stable Release (Recommended):
 ```bash
 cd ~
-git clone --depth 1 --branch v2.2.6 https://github.com/hakuimaku/hakuspace.git ~/hakuspace
+git clone --depth 1 --branch v2.2.6 https://github.com/sihooleebd/bonfire.git ~/bonfire
 
 ```
 - If you prefer to experience the **lastest changes**:
 ```bash
 cd ~
-git clone https://github.com/hakuimaku/hakuspace.git ~/hakuspace
+git clone https://github.com/sihooleebd/bonfire.git ~/bonfire
 
 ```
 
 ### 2. Run the Installation Script
 
 ```bash
-cd hakuspace
+cd bonfire
 chmod +x install.sh
 ./install.sh
 ```
@@ -144,37 +146,37 @@ xhost +si:localuser:root
 Grants the local root user permission to connect to and launch graphical (GUI) applications (like `GParted`) within the current user's active X server or Xwayland session.
 
 
-### Update Haku Space
-Simply run `update.sh` script in hakuspace folder.
+### Update Bonfire Space
+Simply run `update.sh` script in bonfire folder.
 ``` bash
-cd ~/hakuspace
+cd ~/bonfire
 chmod +x update.sh
 ./update.sh
 ```
 
-### Uninstall Haku Space
+### Uninstall Bonfire Space
 > (WM: The Window Manager you are currently using, e.g., hyprland, niri, mango).
 
 - Remove all scripts located in `~/.local/bin`.
-- Delete the auto-generated files in `~/.local/state/haku_theme`.
+- Delete the auto-generated files in `~/.local/state/glow`.
 - If necessary, you can also remove the icons and themes inside `~/.icons` and `~/.themes`.
-- Review `pkg-core.txt`, `pkg-service.txt`, `pkg-optional.txt` (in hakuspace/common) and `pkg-WM.txt` (in hakuspace/WM) to uninstall any unnecessary packages.
+- Review `pkg-core.txt`, `pkg-service.txt`, `pkg-optional.txt` (in bonfire/common) and `pkg-WM.txt` (in bonfire/WM) to uninstall any unnecessary packages.
 
 ---
 
 ## NixOS Configuration
 
-See the main configuration file at [hakuspace-config.nix](nix/hakuspace-config.nix)
+See the main configuration file at [bonfire-config.nix](nix/bonfire-config.nix)
 
 * Simply clone this repository and run the `install.sh` script exactly as outlined [above](#installation-guide).
-* You can use either method: online remote via [flake.nix](nix/flake.nix.example) or offline by directly importing `hakuspace-config.nix` into your `configuration.nix` (2 modes already have install flow in script `install.sh`).
-* `hakuspace-config.nix` does not set a display manager by default, as it may conflict with your existing display manager.
-* 3 current options in `hakuspace-config.nix` that you can enable/disable in your `configuration.nix`:
+* You can use either method: online remote via [flake.nix](nix/flake.nix.example) or offline by directly importing `bonfire-config.nix` into your `configuration.nix` (2 modes already have install flow in script `install.sh`).
+* `bonfire-config.nix` does not set a display manager by default, as it may conflict with your existing display manager.
+* 3 current options in `bonfire-config.nix` that you can enable/disable in your `configuration.nix`:
 
 ```nix
 {
-  hakuspace = {
-    enable = true; # Enable the full hakuspace config
+  bonfire = {
+    enable = true; # Enable the full bonfire config
     enableFishShell = true; # Enable Fish shell
   };
 }
@@ -207,7 +209,7 @@ hyprpm reload
 ```
 Read the Wiki for more info: https://wiki.hypr.land/Plugins/Using-Plugins/
 
-See more in `~/hakuspace-control/hyprland-custom.lua` for guide.
+See more in `~/bonfire-control/hyprland-custom.lua` for guide.
 
 ---
 
@@ -251,11 +253,11 @@ See more in `~/hakuspace-control/hyprland-custom.lua` for guide.
 
 ## Assets Located
 
-- Custom config (your personal changes): `~/hakuspace-control`
-- State file & Haku Theme for waybar, rofi,... (includes accent_color, font, font size): `~/.local/state/haku_theme`
+- Custom config (your personal changes): `~/bonfire-control`
+- State file & Bonfire Theme for waybar, rofi,... (includes accent_color, font, font size): `~/.local/state/glow`
 - Icons: `~/.icons`
 - Themes: `~/.themes`
-- All hakuspace scripts: `~/.local/bin`
+- All bonfire scripts: `~/.local/bin`
 - Fastfetch logo: `~/.config/fastfetch`
 - Wallpapers: `~/Pictures/Wallpapers`
 - Lively wallpapers: `~/Videos/Wallpapers`
@@ -287,7 +289,7 @@ systemctl --user disable swaync.service
 
 - This is a personal dotfiles configuration. Feel free to fork and adapt it to your needs!
 - Tiktok / See more showcase: [@hakuimaku2372](https://www.tiktok.com/@hakuimaku2372)
-- Discord: [haku-shell](https://discord.gg/Juuun8sXsN)
+- Discord: [bonfire-shell](https://discord.gg/Juuun8sXsN)
 
 ---
 

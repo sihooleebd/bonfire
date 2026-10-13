@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 # Directories
-SOURCE_DIR="$HAKU_DIR/src"
-ASSETS_DIR="$HAKU_DIR/assets"
+SOURCE_DIR="$BONFIRE_DIR/src"
+ASSETS_DIR="$BONFIRE_DIR/assets"
 COMMON_DIR="$SOURCE_DIR/common"
 WM_DIR="$SOURCE_DIR/wm"
-NIX_DIR="$HAKU_DIR/nix"
+NIX_DIR="$BONFIRE_DIR/nix"
 
 # Backup directory with timestamp
 BACKUP_TS="$(date +%Y-%m-%d_%H-%M-%S)"
@@ -29,6 +29,6 @@ PKG_LABWC="$SOURCE_DIR/packages/pkg-labwc.txt"
 ARCHIVE_REPO_URL="https://github.com/hakuimaku/hakuspace-archive.git"
 ARCHIVE_DIR="$HOME/hakuspace-archive"
 
-# hakuspace-control directory
-HAKUSPACE_CONTROL_DIR="$ASSETS_DIR/hakuspace-control"
-DEST_CONTROL_DIR="$HOME/hakuspace-control"
+# bonfire-control directory
+BONFIRE_CONTROL_DIR="$ASSETS_DIR/bonfire-control"
+DEST_CONTROL_DIR="$HOME/bonfire-control"
